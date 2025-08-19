@@ -9,7 +9,8 @@ const corsOptions = {
   origin: [
     'http://localhost:5173', 
     'http://192.168.1.99:5173', 
-    'http://192.168.1.99:8000'
+    'http://192.168.1.99:8000',
+    'https://eventqueue-fe.vercel.app/'
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Tambahkan OPTIONS di sini
   allowedHeaders: ['Content-Type', 'Authorization'],
