@@ -19,6 +19,8 @@ const corsOptions = {
   optionsSuccessStatus: 204
 };
 
+console.log(corsOptions);
+
 // Terapkan CORS middleware sekali saja
 app.use(cors(corsOptions));
 
