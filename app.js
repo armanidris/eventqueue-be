@@ -11,7 +11,6 @@ const corsOptions = {
     'http://192.168.1.99:5173', 
     'http://192.168.1.99:8000',
     'https://eventqueue-fe.vercel.app',
-    'https://eventqueue-ofvy90j95-arman-idris-projects.vercel.app'
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Tambahkan OPTIONS di sini
   allowedHeaders: ['Content-Type', 'Authorization'],
