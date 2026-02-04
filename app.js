@@ -27,9 +27,11 @@ app.use(express.json());
 
 // Routes
 const courtsRoute = require("./routes/courts");
+const eventRoute = require("./routes/event");
 const { router: sseRouter } = require("./routes/sse");
 
 app.use("/api/courts", courtsRoute);
+app.use("/api/event", eventRoute);
 app.use('/api/sse', sseRouter);
 
 // Error handling middleware

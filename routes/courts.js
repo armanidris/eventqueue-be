@@ -63,15 +63,6 @@ router.post('/:id/next', async (req, res) => {
       return res.status(404).json({ error: 'Court not found' });
     }
 
-    // Validasi
-    if (court.current >= court.Last) {
-      await db.run('ROLLBACK');
-      return res.status(400).json({ 
-        error: 'Cannot proceed',
-        message: 'Match has reached final limit'
-      });
-    }
-
     // Hitung nilai baru
     const updated = {
       current: court.next,

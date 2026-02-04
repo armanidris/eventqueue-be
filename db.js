@@ -7,12 +7,20 @@ const db = new sqlite3.Database(dbPath);
 // Buat tabel jika belum ada
 db.serialize(() => {
   db.run(`
+
     CREATE TABLE IF NOT EXISTS courts (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT NOT NULL,
       current INTEGER,
       next INTEGER,
       afterNext INTEGER
+    )
+  `);
+
+  db.run(`
+    CREATE TABLE IF NOT EXISTS event (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL
     )
   `);
 
@@ -24,6 +32,15 @@ db.serialize(() => {
       stmt.run("Lapangan B", 4, 5, 6);
       stmt.run("Lapangan C", 7, 8, 9);
       stmt.run("Lapangan D", 10, 11, 12);
+      stmt.finalize();
+    }
+  });
+
+  // Insert default event kalau masih kosong
+  db.get("SELECT COUNT(*) as count FROM event", (err, row) => {
+    if (row.count === 0) {
+      const stmt = db.prepare("INSERT INTO event (name) VALUES (?)");
+      stmt.run("Kejuaraan Taekwondo 2026");
       stmt.finalize();
     }
   });
